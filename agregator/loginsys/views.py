@@ -21,7 +21,6 @@ def register(request):
 	return render(request, 'loginsys/register.html', context)
 
 def login(request):
-	#return HttpResponse('login')
 	context = {}
 	if request.method == 'POST':
 		username = request.POST.get('username', '')
