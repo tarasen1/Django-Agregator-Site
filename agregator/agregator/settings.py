@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'loginsys',
     'mainpage',
 ]
@@ -45,7 +46,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -116,16 +117,12 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+STATIC_URL = '/static/' 
 
-STATIC_URL = '/static/'
+STATICFILES_DIRS=[ os.path.join(BASE_DIR,"static"), ] 
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    #'/vai/www/static/'
-    '/static'
-]
+STATIC_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn") 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = "media"
 
+MEDIA_URL  = '/media/'

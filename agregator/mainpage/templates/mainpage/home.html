@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+
+{%block content%}
+	<form method="post" action="/fltr/">
+		<label for="city">City</label>
+		<select id="city" name="city">
+			<option value="None">---</option>
+		    <option value="Kyiv">Kyiv</option>
+		    <option value="Lviv">Lviv</option>
+		    <option value="Miami">Miami</option>
+		  </select>
+
+		 <label for="light">Light</label>
+		<select id="light" name="light">
+			<option value='None'>---</option>
+		    <option value='1'>Day Light</option>
+		    <option value='2'>Cheap Equipment</option>
+		    <option value='3'>Proffesional Equipment</option>
+		 </select>
+
+  		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+
+
+	{%for room in rooms%}
+	{% if forloop.first %}<div class="row">{% endif %}
+		<div class="col-md-3">
+			<h1><a href="/room/get/{{room.id}}">{{room.room_name}}</a></h1>
+			<!--<p>{{room.room_photo.url}}</p>-->
+			<img src="{{room.room_photo.url}}" alt="bibes" width="300px" height="200px">
+			<p>{{room.room_descpription|truncatechars:200}}</p>
+		</div>
+	{% if forloop.counter|divisibleby:4 %}</div><hr><div class="row">{% endif %}
+    {% if forloop.last %}</div>{% endif %}
+	{%endfor%}
+
+
+
+{%endblock%}
