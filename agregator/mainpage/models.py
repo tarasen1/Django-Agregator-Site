@@ -32,3 +32,5 @@ class Comment(models.Model):
 	comment_like = models.IntegerField(default = 0)
 	comment_article = models.ForeignKey(Room)
 	comment_user = models.ForeignKey(User)
+
+

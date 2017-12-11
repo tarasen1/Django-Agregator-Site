@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from mainpage.models import Room
-
+from django.contrib import auth
 
 def mainPage(request):
 	context = {
 		'pageTitle'	:	'Agreg',
-		'rooms'	:	Room.objects.filter(),
+		'rooms'	:	Room.objects.all(),
+		'username'	:	auth.get_user(request).username,
 	}
 	return render(request, 'mainpage/home.html', context)
 
@@ -32,6 +33,7 @@ def content_filter(request):
 				
 		context		=	{
 			'pageTitle'	:	'Agreg',
-			'rooms'		:	fltr_rooms
+			'rooms'		:	fltr_rooms,
+			'username'	:	auth.get_user(request).username,
 		}
 		return render(request, 'mainpage/home.html', context)
